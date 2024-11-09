@@ -1,7 +1,9 @@
 import { test } from '@playwright/test'
 const { sampleAppPage } = require('../Pages/sample-app.page')
-let username = process.allowedNodeEnvironmentFlags.USERNAME
-let password = process.allowedNodeEnvironmentFlags.PASSWORD
+import * as dotenv from 'dotenv'
+dotenv.config()
+let username = process.env.USERNAME
+let password = process.env.PASSWORD
 test.describe.parallel("Sample app suite", () =>{
 
 test('login test', async ({ page }) => {
