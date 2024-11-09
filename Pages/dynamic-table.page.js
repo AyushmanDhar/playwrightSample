@@ -1,4 +1,5 @@
 import {expect} from '@playwright/test'
+import {homePage} from '../Pages/home-page.page'
 exports.DynamicTablePage = class DynamicTablePage {
     constructor(page) {
         this.page = page;
@@ -10,6 +11,17 @@ exports.DynamicTablePage = class DynamicTablePage {
 
     async navigateTODynamicTable() {
         await this.dynamicTableUrl;
+       
+    }
+    async navigateTOHomePage() {
+        const [homePage] = await Promise.all([
+            context.waitForEvent('page'), // Wait for the 'page' event
+            this.status.click()
+        ])
+        
+      
+        return new homePage(context);
+       
     }
 
     async getIndexOfHeader(header) {
