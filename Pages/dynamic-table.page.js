@@ -13,16 +13,7 @@ exports.DynamicTablePage = class DynamicTablePage {
         await this.dynamicTableUrl;
        
     }
-    async navigateTOHomePage() {
-        const [homePage] = await Promise.all([
-            context.waitForEvent('page'), // Wait for the 'page' event
-            this.status.click()
-        ])
         
-      
-        return new homePage(context);
-       
-    }
 
     async getIndexOfHeader(header) {
         let allHeaders = await this.columnHeaders.evaluateAll((elements) => elements.map((el) => el.textContent));
